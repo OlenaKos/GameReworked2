@@ -8,8 +8,10 @@ class Factory
    public:
       Factory();
       virtual ~Factory();
-      virtual Unit* getUnit(const std::string &);
-      void addDepartment(Factory*);
+
+	  virtual Unit<true, LandingType > * getUnit(const std::string&);
+      
+	  void addDepartment(Factory*);
    private:
       std::vector<Factory*> departments;
 };

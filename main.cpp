@@ -13,10 +13,10 @@ int main(int argv, char* argc[])
    Cell* myCell = new Cell(land);
    Factory factory;
    factory.addDepartment(getDepartment(unitType));
-   Unit* unit = factory.getUnit(unitType);
+   Unit<true, LandingType>* unit = factory.getUnit(unitType);
 
-   Unit* cavalry1 = factory.getUnit(unitType);
-   Unit* cavalry2 = factory.getUnit(unitType);
+   Unit<true, LandingType>* cavalry1 = factory.getUnit(unitType);
+   Unit<true, LandingType>* cavalry2 = factory.getUnit(unitType);
    // use unit there
    std::cout << "unit->getHealth ()" << unit->getHealth () << std::endl;
    std::cout << "myCell->getLandscape ()" << myCell->getLandscape ()<< std::endl;

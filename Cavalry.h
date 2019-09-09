@@ -11,7 +11,6 @@ private:
 	static std::map <Cell::Landscape, int> DefenceBonusMap;
 
 public:
-	 Unit::LandingTypeValue  = LandingType::Land;
 	 Cavalry(int h, int ch, Cell& c);
      virtual ~Cavalry();
 	 virtual std::map<Cell::Landscape, int> getAttackBonusMap();
