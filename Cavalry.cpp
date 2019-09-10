@@ -1,9 +1,11 @@
 #include "Cavalry.h"
 #include "Cell.h"
+#include "LandUnit.h"
 #include <iostream>
 #include <map>
 
 std::map <Cell::Landscape, int> Cavalry::AttackBonusMap = {
+
 		{ Cell::Landscape::Water, -2 },
 		{ Cell::Landscape::Grass, 10 },
 		{ Cell::Landscape::Sand, 7 },
@@ -21,7 +23,7 @@ std::map < Cell::Landscape, int> Cavalry::DefenceBonusMap = {
 		{ Cell::Landscape::Forest, 5}
 };
 
-Cavalry::Cavalry(int h, int d, Cell& c) : Unit<UnitType::Military, LandingType>(h,d,c)
+Cavalry::Cavalry(int h, int d, Cell& c) : Unit <UnitType::Military, LandingType::Land >(h,d,c)
 {
    std::cout << "Cavalry(int h, damage d, Cell& c) : health (h), damage(d), cell(c)" << std::endl;
 }

@@ -2,53 +2,184 @@
 #include "Unit.h"
 #include <string>
 #include <vector>
+#include <algorithm>
 
-template <UnitType>
+
+template  <UnitType, LandingType>
 class Factory
 {
    public:
-	  Factory();
-	  virtual ~Factory();
+	  Factory()
+	  {
+		  std::cout << "Factory::Factory()" << std::endl;
+	  }
+      virtual ~Factory()
+	  {
+		  std::cout << "Factory::~Factory()" << std::endl;
+		  std::for_each(departments.begin(), departments.end(), [](Factory* factory) { delete factory; });
+	  }
 
-	  virtual Unit<UnitType, LandingType > * getUnit(const std::string&);
+	  virtual Unit<UnitType::Military, LandingType::Land>* getUnit(const std::string& unitType)
+	  {
+		  Unit<UnitType::Military, LandingType::Land>* unit = nullptr;
+		  std::vector<Factory*>::iterator iter = departments.begin();
+		  while (unit == nullptr && iter != departments.end())
+		  {
+			  unit = (*iter)->getUnit(unitType);
+			  ++iter;
+		  }
+		  return unit;
+	  }
       
-	  void addDepartment(Factory*);
+	  void addDepartment(Factory* factory)
+	  {
+		  departments.push_back(factory);
+		  return;
+	  }
    private:
       std::vector<Factory*> departments;
 };
 
-
-template<UnitType>
-Factory<UnitType>::Factory()
+template <>
+class Factory < UnitType::Civil, LandingType::Land > //specialization of template for the Civil - Land units
 {
-   std::cout << "Factory::Factory()" << std::endl;
-}
+public:
+	Factory()
+	{
+		std::cout << "Factory::Factory()" << std::endl;
+	}
+	virtual ~Factory()
+	{
+		std::cout << "Factory::~Factory()" << std::endl;
+		std::for_each(departments.begin(), departments.end(), [](Factory* factory) { delete factory; });
+	}
 
-template<UnitType>
-Factory<UnitType>::~Factory()
+	virtual Unit<UnitType::Military, LandingType::Land>* getUnit(const std::string& unitType)
+	{
+		Unit<UnitType::Military, LandingType::Land>* unit = nullptr;
+		std::vector<Factory*>::iterator iter = departments.begin();
+		while (unit == nullptr && iter != departments.end())
+		{
+			unit = (*iter)->getUnit(unitType);
+			++iter;
+		}
+		return unit;
+	}
+
+	void addDepartment(Factory* factory)
+	{
+		departments.push_back(factory);
+		return;
+	}
+private:
+	std::vector<Factory*> departments;
+
+
+};
+
+template <>
+class Factory < UnitType::Military, LandingType::Land > //specialization of template for the Military-land units
 {
-   std::cout << "Factory::~Factory()" << std::endl;
-   std::for_each(departments.begin(), departments.end(), [](Factory* factory){ delete factory;} );
-}
 
-template<UnitType>
-Unit<UnitType, LandingType>* Factory<UnitType>::getUnit(const std::string & unitType)
+public:
+	Factory()
+	{
+		std::cout << "Factory::Factory()" << std::endl;
+	}
+	virtual ~Factory()
+	{
+		std::cout << "Factory::~Factory()" << std::endl;
+		std::for_each(departments.begin(), departments.end(), [](Factory* factory) { delete factory; });
+	}
+
+	virtual Unit<UnitType::Military, LandingType::Land>* getUnit(const std::string& unitType)
+	{
+		Unit<UnitType::Military, LandingType::Land>* unit = nullptr;
+		std::vector<Factory*>::iterator iter = departments.begin();
+		while (unit == nullptr && iter != departments.end())
+		{
+			unit = (*iter)->getUnit(unitType);
+			++iter;
+		}
+		return unit;
+	}
+
+	void addDepartment(Factory* factory)
+	{
+		departments.push_back(factory);
+		return;
+	}
+private:
+	std::vector<Factory*> departments;
+};
+
+template <>
+class Factory < UnitType::Military, LandingType::Air >  //specializion of template for the Military Air units
 {
-   Unit<UnitType::Civil, LandingType>* unit = nullptr;
-   std::vector<Factory*>::iterator iter = departments.begin();
-   while( unit == nullptr && iter != departments.end()  )
-   {
-      unit = (*iter)->getUnit(unitType);
-      ++iter;
-   }
-   return unit;
-}
+public:
+	Factory()
+	{
+		std::cout << "Factory::Factory()" << std::endl;
+	}
+	virtual ~Factory()
+	{
+		std::cout << "Factory::~Factory()" << std::endl;
+		std::for_each(departments.begin(), departments.end(), [](Factory* factory) { delete factory; });
+	}
 
-template<UnitType>
-void Factory<UnitType>::addDepartment(Factory* factory)
+	virtual Unit<UnitType::Military, LandingType::Land>* getUnit(const std::string& unitType)
+	{
+		Unit<UnitType::Military, LandingType::Land>* unit = nullptr;
+		std::vector<Factory*>::iterator iter = departments.begin();
+		while (unit == nullptr && iter != departments.end())
+		{
+			unit = (*iter)->getUnit(unitType);
+			++iter;
+		}
+		return unit;
+	}
+
+	void addDepartment(Factory* factory)
+	{
+		departments.push_back(factory);
+		return;
+	}
+private:
+	std::vector<Factory*> departments;
+};
+
+template <>
+class Factory <UnitType::Military, LandingType::Navy> //specialization of template  for the Military Navy units
 {
-   departments.push_back(factory);
-   return;
-}
+public:
+	Factory()
+	{
+		std::cout << "Factory::Factory()" << std::endl;
+	}
+	virtual ~Factory()
+	{
+		std::cout << "Factory::~Factory()" << std::endl;
+		std::for_each(departments.begin(), departments.end(), [](Factory* factory) { delete factory; });
+	}
 
+	virtual Unit<UnitType::Military, LandingType::Land>* getUnit(const std::string& unitType)
+	{
+		Unit<UnitType::Military, LandingType::Land>* unit = nullptr;
+		std::vector<Factory*>::iterator iter = departments.begin();
+		while (unit == nullptr && iter != departments.end())
+		{
+			unit = (*iter)->getUnit(unitType);
+			++iter;
+		}
+		return unit;
+	}
 
+	void addDepartment(Factory* factory)
+	{
+		departments.push_back(factory);
+		return;
+	}
+private:
+	std::vector<Factory*> departments;
+
+};
