@@ -13,7 +13,7 @@ std::map < Cell::Landscape, int> Builder::DefenceBonusMap = {
 		{ Cell::Landscape::Forest, 5}
 };
 
-Builder::Builder(int h, int d, Cell& c) : Unit <true, LandingType> ( h, d, c)
+Builder::Builder(int h, int d, Cell& c) : Unit <UnitType::Civil, LandingType> ( h, d, c)
 {
 	std::cout << "Builder(int h, damage d, Cell& c) : health (h), damage(d), cell(c)" << std::endl;
 }

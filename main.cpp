@@ -4,19 +4,19 @@
 #include <string>
 #include <iostream>
 
-Factory* getDepartment(const std::string &);
+Factory<UnitType::Military>* getDepartment(const std::string &);
 
 int main(int argv, char* argc[])
 {
    std::string unitType = "cavalry";//argc[1];
    Cell::Landscape land = Cell::Landscape::Grass;
    Cell* myCell = new Cell(land);
-   Factory factory;
+   Factory<UnitType::Military> factory;
    factory.addDepartment(getDepartment(unitType));
-   Unit<true, LandingType>* unit = factory.getUnit(unitType);
+   Unit<UnitType::Military, LandingType>* unit = factory.getUnit(unitType);
 
-   Unit<true, LandingType>* cavalry1 = factory.getUnit(unitType);
-   Unit<true, LandingType>* cavalry2 = factory.getUnit(unitType);
+   Unit<UnitType::Military, LandingType>* cavalry1 = factory.getUnit(unitType);
+   Unit<UnitType::Military, LandingType>* cavalry2 = factory.getUnit(unitType);
    // use unit there
    std::cout << "unit->getHealth ()" << unit->getHealth () << std::endl;
    std::cout << "myCell->getLandscape ()" << myCell->getLandscape ()<< std::endl;

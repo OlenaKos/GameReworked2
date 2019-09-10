@@ -2,7 +2,7 @@
 #include "Unit.h"
 #include "Factory.h"
 
-class Builder : public Unit <true, LandingType>
+class Builder : public Unit <UnitType::Civil, LandingType::Land>
 {
 private:
 	static std::map <Cell::Landscape, int> DefenceBonusMap;

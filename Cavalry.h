@@ -4,7 +4,7 @@
 #include "Cell.h"
 #include "Unit.h"
 
-class Cavalry : public Unit <false, LandingType >
+class Cavalry : public Unit <UnitType::Military, LandingType::Land >
 {
 private:
 	static std::map <Cell::Landscape, int> AttackBonusMap;
