@@ -2,6 +2,8 @@
 #include "Cell.h"
 #include <map>
 #include <iostream>
+#include <string>
+#include <fstream>
 
 
 
@@ -43,6 +45,7 @@ private:
 
 	bool IsDefenced;
 
+	std::string unitType;
 
 
 public:
@@ -57,6 +60,8 @@ public:
 	}
 
 	int getHealth();
+
+	std::string getCell();
 
 	Cell::Landscape getCurrentLandscape();
 
@@ -84,6 +89,7 @@ private:
 
 	bool IsDefenced;
 
+	std::string unitType;
 
 
 public:
@@ -110,6 +116,25 @@ public:
 		std::cout << this->health << std::endl;
 		return this->health;
 	}
+	std::string getCellValues()
+	{
+		std::string cellValues = std::to_string(this->cell.getX()) + std::to_string(this->cell.getY());
+		return cellValues;
+	}
+	std::string getUnitValues()
+	{
+		std::string unitValues = std::string(this->unitType) + ";"+ std::to_string(this->health) + ";" + std::to_string(this->damage) + ";" + std::to_string(this->IsDefenced) + ";" + getCellValues();
+		return unitValues;
+	}
+
+	void Save()
+	{
+		std::ofstream outfile("UnitSave.txt");
+		outfile << getUnitValues() << std::endl;
+		outfile.close();
+
+	}
+
 	bool getIsDefenced()
 
 	{
@@ -179,7 +204,7 @@ private:
 
 	bool IsDefenced;
 
-
+	std::string unitType;
 
 public:
 
@@ -205,6 +230,26 @@ public:
 		std::cout << this->health << std::endl;
 		return this->health;
 	}
+
+	std::string getCellValues()
+	{
+		std::string cellValues = std::to_string(this->cell.getX()) + std::to_string(this->cell.getY());
+		return cellValues;
+	}
+	std::string getUnitValues()
+	{
+		std::string unitValues = std::string(this->unitType) + ";" + std::to_string(this->health) + ";" + std::to_string(this->damage) + ";" + std::to_string(this->IsDefenced) + ";" + getCellValues();
+		return unitValues;
+	}
+
+	void Save()
+	{
+		std::ofstream outfile("UnitSave.txt");
+		outfile << getUnitValues() << std::endl;
+		outfile.close();
+
+	}
+
 	bool getIsDefenced()
 
 	{
@@ -303,7 +348,7 @@ private:
 
 	bool IsDefenced;
 
-
+	std::string unitType;
 
 public:
 
@@ -328,6 +373,24 @@ public:
 	{
 		std::cout << this->health << std::endl;
 		return this->health;
+	}
+	std::string getCellValues()
+	{
+		std::string cellValues = std::to_string(this->cell.getX()) + std::to_string(this->cell.getY());
+		return cellValues;
+	}
+	std::string getUnitValues()
+	{
+		std::string unitValues = std::string(this->unitType) + ";" + std::to_string(this->health) + ";" + std::to_string(this->damage) + ";" + std::to_string(this->IsDefenced) + ";" + getCellValues();
+		return unitValues;
+	}
+
+	void Save()
+	{
+		std::ofstream outfile("UnitSave.txt");
+		outfile << getUnitValues() << std::endl;
+		outfile.close();
+
 	}
 	bool getIsDefenced()
 
@@ -427,7 +490,7 @@ private:
 
 	bool IsDefenced;
 
-
+	std::string unitType;
 
 public:
 
@@ -452,6 +515,24 @@ public:
 	{
 		std::cout << this->health << std::endl;
 		return this->health;
+	}
+	std::string getCellValues()
+	{
+		std::string cellValues = std::to_string(this->cell.getX()) + std::to_string(this->cell.getY());
+		return cellValues;
+	}
+	std::string getUnitValues()
+	{
+		std::string unitValues = std::string(this->unitType) + ";" + std::to_string(this->health) + ";" + std::to_string(this->damage) + ";" + std::to_string(this->IsDefenced) + ";" + getCellValues();
+		return unitValues;
+	}
+
+	void Save()
+	{
+		std::ofstream outfile("UnitSave.txt");
+		outfile << getUnitValues() << std::endl;
+		outfile.close();
+
 	}
 	bool getIsDefenced()
 

@@ -24,7 +24,8 @@ int main(int argv, char* argc[])
    std::cout << "cavalry1->getHealth () before attack = " << cavalry1->getHealth() << std::endl;
    std::cout << "cavalry2->getHealth () before attack = " << cavalry2->getHealth() << std::endl;
 
-   //cavalry1->attack(cavalry2);
+   cavalry1->attack(cavalry2);
+   cavalry1->Save();
 
    std::cout << "cavalry1->getHealth () after attack = " << cavalry1->getHealth() << std::endl;
    std::cout << "cavalry2->getHealth () after attack = " << cavalry2->getHealth() << std::endl;
